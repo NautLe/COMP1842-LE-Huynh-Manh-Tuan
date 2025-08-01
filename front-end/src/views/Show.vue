@@ -5,7 +5,7 @@
 
       <div class="ui form">
         <div class="field">
-          <label><i class="cl flag"></i> English</label>
+          <label><i class="united kingdom flag"></i> English</label>
           <input type="text" readonly :value="word.english" />
         </div>
 
@@ -15,7 +15,7 @@
         </div>
 
         <div class="field">
-          <label><i class="cn flag"></i> Chinese</label>
+          <label><i class="china flag"></i> Chinese</label>
           <input type="text" readonly :value="word.chinese" />
         </div>
       </div>

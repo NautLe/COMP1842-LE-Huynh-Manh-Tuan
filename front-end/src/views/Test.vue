@@ -81,6 +81,12 @@
         <i class="play icon"></i> Start Test
       </button>
     </div>
+      <!-- ⏳ Calculating Results -->
+      <div v-else-if="isCalculatingResult" class="loading-screen">
+        <div class="ui active dimmer fullscreen">
+          <div class="ui text loader">Calculating Results...</div>
+        </div>
+      </div>
 
     <!-- 🎯 Final Summary -->
     <div v-else-if="testCompleted" class="result-card">
@@ -94,8 +100,6 @@
     <!-- 🧠 Quiz Mode -->
     <div v-else-if="word && choices.length" class="ui form">
       <div class="ui segment timer-score">
-        <strong>Score:</strong> {{ score }} /
-        {{ totalQuestions }} |
         <strong>⏱</strong> {{ timer }}s
       </div>
 
@@ -169,6 +173,7 @@ export default {
     intervalId: null,
     questionDropdownOpen: false,
     answerDropdownOpen: false,
+    isCalculatingResult: false,
     languages: [
       { value: 'german', label: 'Deutsch', flag: 'https://flagcdn.com/w40/de.png' },
       { value: 'english', label: 'English', flag: 'https://flagcdn.com/w40/gb.png' },
@@ -251,9 +256,14 @@ export default {
     },
     nextWord() {
       this.currentQuestion++;
-      if (!this.testCompleted) {
-        this.loadQuestion();
-      }
+if (!this.testCompleted) {
+  this.loadQuestion();
+} else {
+  this.isCalculatingResult = true;
+  setTimeout(() => {
+    this.isCalculatingResult = false;
+  }, 2000); // Show loading for 2 seconds
+}
     },
     checkAnswer(choice) {
       clearInterval(this.intervalId);
@@ -309,6 +319,13 @@ body, html {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
   
+}
+
+.loading-screen {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .form-container {
@@ -474,7 +491,7 @@ h1{
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 1.3rem;
+  font-size: 1.3rem !important;
   padding: 1rem 1.5rem;
   background: #f7f7f7;
   border-radius: 12px;

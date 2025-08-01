@@ -3,7 +3,8 @@ import Router from 'vue-router';
 import Words from './views/Words.vue';
 import New from './views/New.vue';
 import Show from './views/Show.vue';
-import Edit from './views/Edit.vue';    
+import Edit from './views/Edit.vue';   
+import Info from './views/Info.vue'; 
 import Test from './views/Test.vue';
 
 Vue.use(Router);
@@ -41,7 +42,13 @@ export default new Router({
         path: '/test',
         name: 'test',
         component: Test
+    },
+    {
+        path: '/info',
+        name: 'info',
+        component: Info
     }
+
 ]
 
 });
