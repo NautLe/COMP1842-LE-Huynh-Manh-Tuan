@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const Vocab = mongoose.model('Vocab');
+const Vocab = require('../models/vocabModel');
 
 
 exports.list_all_words = async (req, res) => {

@@ -38,6 +38,8 @@ export default {
 </script>
 
 <style>
+
+
 #app > div.navbar {
   margin-bottom: 1.5em;
 }
@@ -58,7 +60,7 @@ div.input {
   margin-bottom: 10px;
 }
 button.ui.button {
-  margin-top: 15px;
+
   display: block;
 }
 
